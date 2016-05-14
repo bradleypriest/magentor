@@ -10,7 +10,7 @@ module MagentoAPI
 
     def client
       @client ||= XMLRPC::Client.new(config[:host], config[:path], config[:port])
-      @client.http_header_extra = {"accept-encoding" => "identity"}
+      @client.http_header_extra = {"accept-encoding" => "identity"}.merge(config[:http_header_extra] || {})
       @client
     end
 
